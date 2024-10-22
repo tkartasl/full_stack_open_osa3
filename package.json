@@ -1,0 +1,27 @@
+{
+  "name": "osa3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tkartasl/full_stack_open_osa3.git"
+  },
+  "author": "Tomi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tkartasl/full_stack_open_osa3/issues"
+  },
+  "homepage": "https://github.com/tkartasl/full_stack_open_osa3#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
