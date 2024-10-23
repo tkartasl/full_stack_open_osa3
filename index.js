@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const morgan = require('morgan')
 
 let persons = [
   {
@@ -28,6 +29,9 @@ const PORT = 3001
 app.listen(PORT)
 console.log(`Server is running on port ${PORT}`)
 app.use(express.json())
+
+morgan.token('body', func = (request, response) => JSON.stringify(request.body))
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 
 app.get('/api/persons', (request, response) => {
   response.json(persons)
@@ -67,7 +71,6 @@ const generateId = () => {
 app.post('/api/persons', (request, response) => {
   const body = request.body
   
-  console.log(body)
   if (!body.name) {
     return response.status(400).json({ 
       error: 'name missing' 
