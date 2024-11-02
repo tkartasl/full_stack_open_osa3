@@ -30,6 +30,7 @@ app.use(express.json())
 app.use(cors())
 morgan.token('body', func = (request, response) => JSON.stringify(request.body))
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
+app.use(express.static('dist'))
 
 app.get('/api/persons', (request, response) => {
   response.json(persons)
@@ -93,6 +94,7 @@ app.post('/api/persons', (request, response) => {
   response.json(person)
 })
 
-const PORT = 3001
-app.listen(PORT)
-console.log(`Server is running on port ${PORT}`)
+const PORT = process.env.PORT || 3001
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`)
+})
