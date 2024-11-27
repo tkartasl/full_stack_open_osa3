@@ -15,18 +15,18 @@ app.get('/api/persons', (request, response, next) => {
   Person.find({}).then(persons => {
     response.json(persons)
   })
-  .catch(error => next(error))
+    .catch(error => next(error))
 })
 
 app.get('/info', (request, response, next) => {
   Person.countDocuments()
-   .then(result => {
-    const info = `Phonebook has info for ${result} people`
-    const now = Date()
-    response.setHeader('Content-Type', 'text/plain')
-    response.send(info + '\n' + now)
-   })
-  .catch(error => next(error))
+    .then(result => {
+      const info = `Phonebook has info for ${result} people`
+      const now = Date()
+      response.setHeader('Content-Type', 'text/plain')
+      response.send(info + '\n' + now)
+    })
+    .catch(error => next(error))
 })
 
 app.get('/api/persons/:id', (request, response, next) => {
@@ -59,22 +59,22 @@ app.post('/api/persons', (request, response, next) => {
   person.save().then(savedPerson => {
     response.json(savedPerson)
   })
-  .catch(error => next(error))
+    .catch(error => next(error))
 })
 
 app.put('/api/persons/:id', (request, response, next) => {
   const body = request.body
 
-    const person = {
-      name: body.name,
-      number: body.number,
-    }
+  const person = {
+    name: body.name,
+    number: body.number,
+  }
 
-    Person.findByIdAndUpdate(request.params.id, person, { new: true })
-      .then(updatedPerson => {
-        response.json(updatedPerson)
-      })
-      .catch(error => next(error))
+  Person.findByIdAndUpdate(request.params.id, person, { new: true })
+    .then(updatedPerson => {
+      response.json(updatedPerson)
+    })
+    .catch(error => next(error))
 })
 
 const errorHandler = (error, request, response, next) => {
