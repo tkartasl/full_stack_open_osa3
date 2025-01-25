@@ -1,1 +1,3 @@
-https://osa3-icy-water-8450.fly.dev
+## Phonebook-app
+-------
+Simple web-app made with React, NodeJS and MongoDB
